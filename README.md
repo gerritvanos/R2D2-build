@@ -1,5 +1,6 @@
+
 # Build workflow
-The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming tool kit) made by Wouter van Ooijen. This guide will help you install and work with this environment.
+The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming tool kit) made by Wouter van Ooijen. This guide will help you install and work with this environment. If you are experiencing any problems installing or working with the environment you can contact the leads, note for windows it is best to contact Gerrit, for linux it is best to contact Lex or Patrick. All of us are able to help you most of the time though.  
 
 ## Installation
  
@@ -15,12 +16,27 @@ The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming t
 
 **Warning:** This installation replaces earlier installations of BMPTK make sure to remove old installation from your PATH environment variable's. 
 
+## Linux:
+The installation on linux is quite simple below a list of packages you need to install, this can be achieved by using your own package manager. Replace apt-get with your own package manager. Most packages are probably already installed.
+
+-   `sudo apt-get install git`
+-   `sudo apt-get install arm-none-eabi`
+-  `sudo apt-get install libnewlib-arm-none-eabi`
+-   `sudo apt-get install bossa-cli`
+-   `sudo apt-get install doxygen`
+-   `sudo apt-get install build-essential`
+
+After installing all the packages clone the R2D2-Build(add link to this) repo by typing the following command `git clone add link here`
+At this point everything should be working fine.
+
+## Working with it:
+
+**Note:** On linux platforms the `bmptk-make` command should be replaced with `make`
 
 ### creating a new module:
-1. Open windows explorer.
-2. Browse to the following directory `<path-to-your-repo>/R2D2-build/modules`
-3. Create a new folder with the name of your module. **note:** Keep in mind the style guide rules. A name could be "test_module"
-4. copy the contents of the template-arduino or template-native directory to the folder of your module. **note:** native projects are for running on your pc and arduino for flashing to the due.
+1. Go to the `modules` directory located in `<path-to-your-repo>/R2D2-build/modules`
+2. Start work on a module by using `git clone https://github.com/R2D2-2019/<name-of-module>` If there are already files in the repo you can skip step 3 if it is the first time go to step 3.
+3. If it is the first time you start work on the module the repo will be empty. Copy the contents of the template-arduino or template-native directory to the folder of your module. **note:** native projects are for running on your pc and arduino for flashing to the due.
 
 ### Writing code:
 
@@ -41,6 +57,8 @@ The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming t
  2. Use cd command to go to the directory `<path-to-your-repo>/R2D2-build/modules/<name-of-your-module>/code`
  3. In this directory run the following command `bmptk-make run`
  4. The code will flash to your arduino or the .exe will start when a native project
+**Note:** On linux make sure you have comport acces or run `sudo make run`
+**Note:** Default COM port on windows is COM2
 
 ### cleaning a project:
  1. Open a command prompt 
