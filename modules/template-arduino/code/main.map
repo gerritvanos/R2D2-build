@@ -1,13 +1,13 @@
 Archive member included to satisfy reference by file (symbol)
 
-e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
                               hwlib.o (__aeabi_ldivmod)
-e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
                               hwlib.o (__aeabi_uldivmod)
-e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
-                              e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
-e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
-                              e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+                              c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+                              c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
 
 Allocating common symbols
 Common symbol       size              file
@@ -188,7 +188,7 @@ Discarded input sections
  .rodata.CSWTCH.279
                 0x00000000       0x10 hwlib.o
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x00000000       0x36 hwlib.o
+                0x00000000       0x37 hwlib.o
  .rodata._ZN5hwlib16font_default_8x86imagesE
                 0x00000000      0xa00 hwlib.o
  .rodata._ZN5hwlibL5blackE
@@ -238,7 +238,7 @@ Discarded input sections
  .rodata.CSWTCH.53
                 0x00000000       0x10 main.o
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x00000000       0x36 main.o
+                0x00000000       0x37 main.o
  .rodata._ZZN3due11ad_pin_infoENS_7ad_pinsEE17ad_pin_info_array
                 0x00000000        0xc main.o
  .rodata._ZZN3due11ad_seq_infoEmE12ad_seq_array
@@ -266,17 +266,17 @@ Discarded input sections
  .text          0x00000000        0x0 bmptk_fixed_size_stack.o
  .data          0x00000000        0x0 bmptk_fixed_size_stack.o
  .bss           0x00000000        0x0 bmptk_fixed_size_stack.o
- .text          0x00000000       0xa0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
- .data          0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
- .bss           0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x00000000       0x44 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
- .data          0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
- .bss           0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
- .data          0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
- .bss           0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
- .ARM.extab     0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
- .data          0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
- .bss           0x00000000        0x0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .text          0x00000000       0xa0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00000000       0x44 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .data          0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .bss           0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .ARM.extab     0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .data          0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
 
 Memory Configuration
 
@@ -288,15 +288,15 @@ nul              0x20018000         0x00000000         xrw
 
 Linker script and memory map
 
-LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a
+LOAD c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a
 LOAD hwlib.o
 LOAD main.o
 LOAD bmptk_cortex.o
 LOAD bmptk_heap_bmptk.o
 LOAD bmptk_fixed_size_stack.o
-LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
-LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a
-LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a
+LOAD c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
+LOAD c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a
+LOAD c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a
                 0x00000000                __rom_start = ORIGIN (rom)
                 0x00080000                __rom_size = LENGTH (rom)
                 0x00080000                __rom_end = (__rom_start + __rom_size)
@@ -364,11 +364,11 @@ LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/..
  .text.__startup
                 0x00000270       0x40 bmptk_cortex.o
                 0x00000270                __startup
- .text          0x000002b0       0x30 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .text          0x000002b0       0x30 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
                 0x000002b0                __aeabi_uldivmod
- .text          0x000002e0      0x2d0 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .text          0x000002e0      0x2d0 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
                 0x000002e0                __udivmoddi4
- .text          0x000005b0        0x4 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .text          0x000005b0        0x4 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
                 0x000005b0                __aeabi_ldiv0
                 0x000005b4                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
@@ -414,7 +414,7 @@ LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/..
 
 .ARM.exidx      0x000005dc        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x000005dc        0x8 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x000005dc        0x8 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
 
 .rel.dyn        0x000005e4        0x0
  .rel.iplt      0x000005e4        0x0 hwlib.o
@@ -526,8 +526,8 @@ LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/..
 
 .debug_frame    0x00000000       0x60
  *(.debug_frame)
- .debug_frame   0x00000000       0x2c e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0000002c       0x34 e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000000       0x2c c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000002c       0x34 c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
 
 .comment        0x00000000       0x75
  .comment       0x00000000       0x75 hwlib.o
@@ -574,13 +574,13 @@ LOAD e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/..
  .ARM.attributes
                 0x000000b4       0x33 bmptk_fixed_size_stack.o
  .ARM.attributes
-                0x000000e7       0x1d e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+                0x000000e7       0x1d c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x00000104       0x1d e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+                0x00000104       0x1d c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x00000121       0x2d e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x00000121       0x2d c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x0000014e       0x1d e:/r2d2 test/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+                0x0000014e       0x1d c:/r2d2/r2d2-build/programs/8 2018-q4-major/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
 
 /DISCARD/
  *(.note.GNU-stack)

@@ -13,7 +13,7 @@
 SEARCH            += $(TI-SOFTWARE)/Catch/include
 
 # add hwlib
-HWLIB             ?= ../../../librarys/hwlib
+HWLIB             ?= ../../../libraries/hwlib
 include           $(HWLIB)/Makefile.inc
 
 # set BMPTK to the bmptk subdirectory
