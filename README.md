@@ -16,7 +16,7 @@ The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming t
 
 **Warning:** This installation replaces earlier installations of BMPTK make sure to remove old installation from your PATH environment variable's. 
 
-## Linux:
+### Linux:
 The installation on linux is quite simple below a list of packages you need to install, this can be achieved by using your own package manager. Replace apt-get with your own package manager. Most packages are probably already installed.
 
 -   `sudo apt-get install git`
