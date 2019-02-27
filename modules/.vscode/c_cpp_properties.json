@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "../librarys/hwlib/library"
+                "../libraries/hwlib/library"
             ],
             "defines": [
                 "_DEBUG",
