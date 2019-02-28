@@ -10,7 +10,7 @@
 
 
 # add Catch
-SEARCH            += $(TI-SOFTWARE)/Catch/include
+SEARCH            += ../../../Catch/include
 
 # add hwlib
 HWLIB             ?= ../../../libraries/hwlib
