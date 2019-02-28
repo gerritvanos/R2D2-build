@@ -10,7 +10,7 @@
 
 
 # add Catch
-SEARCH            += ../../../Catch/include
+SEARCH            += ../../../libraries/Catch2/single_include/catch2
 
 # add hwlib
 HWLIB             ?= ../../../libraries/hwlib
