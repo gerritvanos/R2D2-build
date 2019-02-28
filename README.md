@@ -66,5 +66,5 @@ At this point everything should be working fine.
  3. In this directory run the following command `bmptk-make clean`
 
 ### IDE/Editor:
-Basically every editor is allow as long as your code is compliant with the [code style guide](https://github.com/R2D2-2019/R2D2-2019/wiki/Style-Guide). Although we recommend using  "VS code" or "CLion" see the dedicated pages for both of these editors on a guide how to install those. 
+Basically every editor is allow as long as your code is compliant with the [code style guide](https://github.com/R2D2-2019/R2D2-2019/wiki/Style-Guide). Although we recommend using  [VS code](https://github.com/R2D2-2019/R2D2-2019/wiki/VS-Code) or [CLion](https://github.com/R2D2-2019/R2D2-2019/wiki/CLion) see the dedicated pages for both of these editors on a guide how to install those. 
 > Written with [StackEdit](https://stackedit.io/).
