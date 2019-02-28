@@ -8,15 +8,15 @@ The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming t
 
  1. Install git by visiting the git [download](https://git-scm.com/download/win) page.  Install using all the default settings and make sure the checkbox which adds git to your path is checked. **note:** If you already installed git on your machine you can skip this step.
  2. Pull the build repo by typing `git clone "add link here"` you can clone repo to whatever drive or folder you want. Remember the path you cloned the repo to.
- 3. Open windows explorer and go to the place you cloned the repo, browse to the folder `R2D2-build/programs/install`
+ 3. Open windows explorer and browse to the path you cloned the repo to, browse to the folder `R2D2-build/programs/install`
  4. Double-click on the "mingw-w64-install.exe" after the installation wizard has opened click next until you can select the installation path at this point change the path to the following `<path-to-your-repo>/R2D2-build/programs`. Install by clicking next. After installation a folder `mingw32` should have appeared int the `R2D2-build/programs` directory.
- 5.  Double-click on the "gcc-arm-none-eabi-8-2018-q4-major-win32-sha1.exe" after the installation wizard has opened click next until you can select the installation path at this point change the path to the following `<path-to-your-repo>/R2D2-build/programs`. Install by clicking next. After installation a folder `8 2018-q4-major` should have appeared int the `R2D2-build/programs` directory.
+ 5.  Double-click on the "gcc-arm-none-eabi-8-2018-q4-major-win32-sha1.exe" after the installation wizard has opened click next until you can select the installation path at this point change the path to the following `<path-to-your-repo>/R2D2-build/programs`. Install by clicking next. After installation a folder `8 2018-q4-major` should have appeared in the `R2D2-build/programs` directory.
  6. Return to the main directory of the repository and run the "init.bat" file. **note:** this file needs to be run as administrator and add all the necessary components to the path environment variable. If you prefer to do this manually you are welcome to do so. The most important path to add is the following `<path-to-your-repo>/R2D2-build/programs/bmptk/tools`
  7. Check if everything is working by opening a command prompt en typ `bmptk-make` if the console returns something like this `bmptk-make: *** no targets specified and no makefiles found. Stop.` everything should work fine.
 
 **Warning:** This installation replaces earlier installations of BMPTK make sure to remove old installation from your PATH environment variable's. 
 
-## Linux:
+### Linux:
 The installation on linux is quite simple below a list of packages you need to install, this can be achieved by using your own package manager. Replace apt-get with your own package manager. Most packages are probably already installed.
 
 -   `sudo apt-get install git`
@@ -33,7 +33,7 @@ At this point everything should be working fine.
 
 **Note:** On linux platforms the `bmptk-make` command should be replaced with `make`
 
-### creating a new module:
+### Creating a new module:
 1. Go to the `modules` directory located in `<path-to-your-repo>/R2D2-build/modules`
 2. Start work on a module by using `git clone https://github.com/R2D2-2019/<name-of-module>` If there are already files in the repo you can skip step 3 if it is the first time go to step 3.
 3. If it is the first time you start work on the module the repo will be empty. Copy the contents of the template-arduino or template-native directory to the folder of your module. **note:** native projects are for running on your pc and arduino for flashing to the due.
@@ -60,11 +60,11 @@ At this point everything should be working fine.
 **Note:** On linux make sure you have comport acces or run `sudo make run`
 **Note:** Default COM port on windows is COM2
 
-### cleaning a project:
+### Cleaning a project:
  1. Open a command prompt 
  2. Use cd command to go to the directory `<path-to-your-repo>/R2D2-build/modules/<name-of-your-module>/code`
  3. In this directory run the following command `bmptk-make clean`
 
 ### IDE/Editor:
-Basically every editor is allow as long as your code is compliant with the [code style guide](https://github.com/R2D2-2019/R2D2-2019/wiki/Style-Guide). Although we recommend using  "VS code" or "CLion" see the dedicated pages for both of these editors on a guide how to install those. 
+Basically every editor is allow as long as your code is compliant with the [code style guide](https://github.com/R2D2-2019/R2D2-2019/wiki/Style-Guide). Although we recommend using  [VS code](https://github.com/R2D2-2019/R2D2-2019/wiki/VS-Code) or [CLion](https://github.com/R2D2-2019/R2D2-2019/wiki/CLion) see the dedicated pages for both of these editors on a guide how to install those. 
 > Written with [StackEdit](https://stackedit.io/).

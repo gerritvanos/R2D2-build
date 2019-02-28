@@ -6,6 +6,6 @@ set bmptkPath=%repoPath%programs\bmptk\tools
 set cppPath=%repoPath%programs\mingw32\bin
 set armPath=%repoPath%programs\8 2018-q4-major\bin
 
-setx /m PATH "%systemPath%%bmptkPath%;%cppPath%;%armPath%"
+setx /m PATH "%systemPath%;%bmptkPath%;%cppPath%;%armPath%"
 
 pause
