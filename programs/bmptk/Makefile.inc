@@ -300,6 +300,10 @@ ifeq ($(TARGET),db105)
    CHIP        ?= lpc810m021fn8
 endif
 
+ifeq ($(TARGET),scouting_lock)
+   CHIP        ?= stm32f030k6
+endif
+
 ifeq ($(TARGET),blue_pill)
    CHIP        ?= stm32f103c8
 endif
@@ -517,6 +521,14 @@ ifeq ($(CHIP),atmega328)
    LINKERSCRIPT := 
    RUN_TERMINAL   ?= $(LPC21ISP) -termonly -term $(HEX) $(SERIAL_PORT) $(CONSOLE_BAUDRATE) 12000 
 endif
+
+.PHONY: bootloader
+bootloader:
+	@echo 'download the arduino bootloader'
+	$(AVRDUDE) -C$(AVRDUDEC) -c usbasp -p atmega328p -b 19200 -v -e -U efuse:w:0x05:m -U hfuse:w:0xD6:m -U lfuse:w:0xFF:m
+	$(AVRDUDE) -C$(AVRDUDEC) -c usbasp -p atmega328p  -P$(SERIAL_PORT) -b115200 -Uflash:w:$(BMPTK)/tools/optiboot_atmega328.hex
+	@echo ' '   
+
 
    #=========================================================================
    #
@@ -746,6 +758,15 @@ ifeq ($(CHIP),stm32f051r8)
    RAM_SIZE       ?= 8k
    STACK_SIZE     ?= 6144  
    DEFINES        += -DBMPTK_INCLUDE_CHIP=stm32f051x8.h 
+endif
+
+ifeq ($(CHIP),stm32f030k6)
+   $(eval $(Cortex-M0))
+   $(eval $(STM32))
+   ROM_SIZE       ?= 16k
+   RAM_SIZE       ?= 4k
+   STACK_SIZE     ?= 2048  
+   DEFINES        += -DBMPTK_INCLUDE_CHIP=stm32f030x6.h 
 endif
 
 ifeq ($(CHIP),stm32f103c8)
@@ -998,11 +1019,15 @@ CLEAN        += $(OBJECTS)
 #============================================================================
 
 DEFINES   += -DBMPTK_TARGET=$(TARGET) 
-DEFINES   += -DBMPTK_TARGET_$(TARGET) -DHWCPP_TARGET_$(TARGET)
+DEFINES   += -DBMPTK_TARGET_$(TARGET) 
+DEFINES   += -DHWLIB_TARGET_$(TARGET) 
+DEFINES   += -DHWCPP_TARGET_$(TARGET)
+
 DEFINES   += -DBMPTK_CHIP=$(CHIP) 
 DEFINES   += -DBMPTK_CHIP_$(CHIP) 
 DEFINES   += -DBMPTK_XTAL=$(XTAL) 
 DEFINES   += -DBMPTK_BAUDRATE=$(CONSOLE_BAUDRATE) 
+DEFINES   += -DHWLIB_BAUDRATE=$(CONSOLE_BAUDRATE)
 DEFINES   += -DBMPTK_VERSION=$(VERSION) 
 
 ifeq ($(HOSTED),1)
@@ -1240,25 +1265,25 @@ $(FIXED_SIZE_STACK_FILE).c: Makefile
 	@echo ' '
    
 # make .elf by linking all objects
-$(ELF): $(addprefix ./,$(OBJECTS)) $(BMPTK_STACK_FILE).o $(LIBA) $(LINKERSCRIPT)
+$(ELF): $(addprefix ./,$(OBJECTS)) $(BMPTK_STACK_FILE).o $(LIBS) $(LINKERSCRIPT)
 	@echo 'Linking ELF target: $(ELF)'
 	$(LINKER) -o $@ $(OBJECTS) $(BMPTK_STACK_FILE).o $(LDFLAGS) $(LIBS)
 	@echo ' '   
     
 # How to make an .exe executable by linking all objects
-$(EXE): $(OBJECTS) 
+$(EXE): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking EXE target: $(EXE)'
 	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '  
       
 # How to make an .dll dynamic link library by linking all objects
-$(DLL): $(OBJECTS) 
+$(DLL): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking DLL target: $(DLL)'
 	$(LINKER) -shared -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '  
       
 # How to make a .pyd python extension by linking all objects
-$(PYD): $(OBJECTS) 
+$(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES) 
 	@echo 'Linking PYD target: $(PYD)'
 	$(LINKER) -shared -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES) $(PYTHON_DLLS)
 	@echo ' '  
@@ -1270,7 +1295,7 @@ $(PYD): $(OBJECTS)
    #=========================================================================
 
 # How to make an .elfx file by linking all objects with a fixed (dummy) stack
-$(ELFX): $(addprefix ./,$(OBJECTS)) $(LIBA) $(FIXED_SIZE_STACK_FILE).o $(LINKERSCRIPT)
+$(ELFX): $(addprefix ./,$(OBJECTS)) $(LIBS) $(FIXED_SIZE_STACK_FILE).o $(LINKERSCRIPT)
 	@echo 'Linking ELFX target: $(ELFX)'
 	$(LINKER) -o $@ $(OBJECTS) $(FIXED_SIZE_STACK_FILE).o $(LDFLAGS) $(LIBS)
 	@echo ' '
