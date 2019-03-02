@@ -389,7 +389,7 @@ define Hosted
    HEAP              ?= NATIVE
    STACK_SIZE        ?= 1   
    ifeq ($(OS),Windows_NT)
-      ALL_LIBRARIES     += -lgdi32
+      #ALL_LIBRARIES     += -lgdi32
    endif
 endef
 
@@ -427,7 +427,7 @@ define Windows
    PREFIX            := $(GCC-WIN)/bin/
    TARGET_CPP_FLAGS  += -mno-ms-bitfields   
    TARGET_C_FLAGS    += -mno-ms-bitfields   
-   TARGET_LN_FLAGS   += -lgdi32
+   #TARGET_LN_FLAGS   += -lgdi32
    RESULTS           += $(EXE)
    export PATH       := $PREFIX:$(PATH)
    RUN               ?= ./$(EXE)
