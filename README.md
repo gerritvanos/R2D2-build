@@ -19,12 +19,12 @@ The build workflow for R2D2-2019 is based on the BMPTK (bare metal programming t
 ### Linux:
 The installation on linux is quite simple below a list of packages you need to install, this can be achieved by using your own package manager. Replace apt-get with your own package manager. Most packages are probably already installed.
 
--   `sudo apt-get install git`
--   `sudo apt-get install arm-none-eabi`
--  `sudo apt-get install libnewlib-arm-none-eabi`
--   `sudo apt-get install bossa-cli`
--   `sudo apt-get install doxygen`
--   `sudo apt-get install build-essential`
+-   `sudo apt install git`
+-   `sudo apt install arm-none-eabi`
+-  `sudo apt install libnewlib-arm-none-eabi`
+-   `sudo apt install bossa-cli`
+-   `sudo apt install doxygen`
+-   `sudo apt install build-essential`
 
 After installing all the packages clone the R2D2-Build(add link to this) repo by typing the following command `git clone add link here`
 At this point everything should be working fine.
