@@ -6,6 +6,7 @@
 *.ld
 *.cbp
 *.lss
+*.exe
 .idea/
 cmake*/
 
