@@ -4,4 +4,8 @@
 *.c
 *.map
 *.ld
+*.cbp
+*.lss
+.idea/
+cmake*/
 
