@@ -1377,7 +1377,7 @@ PORT_CHECK :=
 run: $(PROJECT)
 	$(PORT_CHECK)
 	$(RUN_PRE)   
-	-$(RUN)
+	$(RUN)
 	$(RUN_TERMINAL)
 	$(RUN_PAUSE)
     
