@@ -427,7 +427,7 @@ define Windows
    PREFIX            := $(GCC-WIN)/bin/
    TARGET_CPP_FLAGS  += -mno-ms-bitfields   
    TARGET_C_FLAGS    += -mno-ms-bitfields   
-   TARGET_LN_FLAGS   += -lgdi32
+   #TARGET_LN_FLAGS   += -lgdi32
    RESULTS           += $(EXE)
    export PATH       := $PREFIX:$(PATH)
    RUN               ?= ./$(EXE)
@@ -1377,7 +1377,7 @@ PORT_CHECK :=
 run: $(PROJECT)
 	$(PORT_CHECK)
 	$(RUN_PRE)   
-	-$(RUN)
+	$(RUN)
 	$(RUN_TERMINAL)
 	$(RUN_PAUSE)
     

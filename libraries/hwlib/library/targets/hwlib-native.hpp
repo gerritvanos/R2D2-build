@@ -13,24 +13,43 @@
 // this file contains Doxygen lines
 /// @file
 
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
+   #define OS_Linux
+   #include <sys/time.h>
+   #define EPOCH_DIFF 11644473600LL
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+   #define OS_Windows
+   #include <windows.h>
+#endif
+
 #ifndef HWLIB_NATIVE_H
 #define HWLIB_NATIVE_H
 
 #define _HWLIB_TARGET_WAIT_US_BUSY
 #include HWLIB_INCLUDE( ../hwlib-all.hpp )
 #include <iostream>
-#include <Windows.h>
 
 namespace hwlib {
 
 #ifdef _HWLIB_ONCE 
 
 uint64_t now_ticks(){
-   // https://stackoverflow.com/questions/1695288/getting-the-current-time-in-milliseconds-from-the-system-clock-in-windows	 
-   FILETIME ft_now;
-   GetSystemTimeAsFileTime( &ft_now );
-   uint64_t ll_now = (LONGLONG)ft_now.dwLowDateTime + ((LONGLONG)(ft_now.dwHighDateTime) << 32LL);   
-   return ll_now / 10;
+   // https://stackoverflow.com/questions/1695288/getting-the-current-time-in-milliseconds-from-the-system-clock-in-windows 
+   #ifdef OS_Linux
+      struct timeval tv;
+      unsigned long long result = EPOCH_DIFF;
+      gettimeofday(&tv, NULL);
+      result += tv.tv_sec;
+      result *= 10000000LL;
+      result += tv.tv_usec * 10;
+      return result;
+
+   #else
+      FILETIME ft_now;
+      GetSystemTimeAsFileTime( &ft_now );
+      uint64_t ll_now = (LONGLONG)ft_now.dwLowDateTime + ((LONGLONG)(ft_now.dwHighDateTime) << 32LL);   
+      return ll_now / 10;
+   #endif
 }   
 
 uint64_t ticks_per_us(){
