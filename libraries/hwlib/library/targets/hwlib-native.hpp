@@ -34,22 +34,22 @@ namespace hwlib {
 #ifdef _HWLIB_ONCE 
 
 uint64_t now_ticks(){
-   // https://stackoverflow.com/questions/1695288/getting-the-current-time-in-milliseconds-from-the-system-clock-in-windows	 
-	#ifdef OS_Linux
+   // https://stackoverflow.com/questions/1695288/getting-the-current-time-in-milliseconds-from-the-system-clock-in-windows 
+   #ifdef OS_Linux
       struct timeval tv;
       unsigned long long result = EPOCH_DIFF;
       gettimeofday(&tv, NULL);
       result += tv.tv_sec;
       result *= 10000000LL;
       result += tv.tv_usec * 10;
-      return result;	
+      return result;
 
-	#else
+   #else
       FILETIME ft_now;
       GetSystemTimeAsFileTime( &ft_now );
       uint64_t ll_now = (LONGLONG)ft_now.dwLowDateTime + ((LONGLONG)(ft_now.dwHighDateTime) << 32LL);   
-      return ll_now / 10;	
-	#endif
+      return ll_now / 10;
+   #endif
 }   
 
 uint64_t ticks_per_us(){
