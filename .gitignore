@@ -1,7 +1,7 @@
 /programs/mingw32
 /programs/8 2018-q4-major
+/modules
 settings.json
-/modules/
 
 # un ignore certain items in the modules directory
 !/modules/template-arduino
