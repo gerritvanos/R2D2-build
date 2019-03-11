@@ -1,3 +1,10 @@
 /programs/mingw32
 /programs/8 2018-q4-major
 settings.json
+/modules/
+
+# un ignore certain items in the modules directory
+!/modules/template-arduino
+!/modules/template-native
+!/modules/.vscode
+!/modules/.clang-format
