@@ -1,0 +1,11 @@
+.phony: build clean
+
+WiringPiPath := ../../../libraries/WiringPi/wiringPi/
+WiringPiSource := $(wildcard $(WiringPiPath)*.c)
+WiringPiHeaders := $(wildcard $(WiringPiPath)*.h)
+
+build:
+	arm-linux-gnueabihf-g++  -std=c++17 main.cpp $(SOURCES) $(HEADERS) -I $(WiringPiPath) -L$(WiringPiPath) -l:libwiringPi.so.2.50 -o main.exe
+
+clean:
+	rm main
