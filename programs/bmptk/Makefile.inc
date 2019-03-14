@@ -187,6 +187,7 @@ DMP           := $(PROJECT).dmp
 LSSX          := $(PROJECT).lssx
 LSS           := $(PROJECT).lss
 EXE           := $(PROJECT).exe
+OUT           := $(PROJECT).out
 DLL           := $(PROJECT).dll
 PYD           := $(PROJECT).pyd
 NMDUMP        := $(PROJECT).nmdump   
@@ -203,6 +204,7 @@ CLEAN         += $(DMP)
 CLEAN         += $(LSSX)
 CLEAN         += $(LSS)
 CLEAN         += $(EXE)
+CLEAN         += $(OUT)
 CLEAN         += $(DLL)
 CLEAN         += $(PYD)
 CLEAN         += $(NMDUMP)
@@ -420,7 +422,29 @@ endef
    # running native
    # 
    #=========================================================================
+
+# running on the raspberry pi 2/3
+ifeq ($(TARGET), raspberry_pi)
+   EMBEDDED          ?= 0
+   HOSTED            ?= 1
+   HAS_FILESYSTEM    ?= 1
+   HEAP              ?= NATIVE
+   STACK_SIZE        ?= 1   
    
+   $(eval $(All_Targets))
+
+   CHIP              := raspberry_pi
+   PREFIX            := $(GCC-RPI)/bin/armv8-rpi3-linux-gnueabihf-
+   TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
+   TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
+   TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
+   RESULTS           += $(OUT)
+   export PATH       := $PREFIX:$(PATH)
+   # RUN               ?= ./$(EXE)
+   # RUN_PAUSE         ?= $(PAUSE)
+   XTAL              ?= 1000000   
+endif
+
 # running native on Windows     
 define Windows      
    CHIP              := Windows_Native
@@ -1276,6 +1300,12 @@ $(EXE): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '  
       
+# How to make an .out executable by linking all objects
+$(OUT): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
+	@echo 'Linking OUT target: $(OUT)'
+	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
+	@echo ' '
+
 # How to make an .dll dynamic link library by linking all objects
 $(DLL): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking DLL target: $(DLL)'
