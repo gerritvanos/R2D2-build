@@ -21,18 +21,23 @@
 #    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
 #################################################################################
 
-VERSION=2.5
 DESTDIR?=/usr
 PREFIX?=/local
 
 LDCONFIG?=ldconfig
+
+ifeq ($(OS),Windows_NT)
+	ARM_GCC = ..\\..\\..\\programs\\rpi3_gcc\\bin\\armv8-rpi3-linux-gnueabihf-gcc.exe
+else
+	ARM_GCC = arm-linux-gnueabihf-gcc
+endif
 
 ifneq ($V,1)
 Q ?= @
 endif
 
 STATIC=libwiringPi.a
-DYNAMIC=libwiringPi.so.$(VERSION)
+DYNAMIC=libwiringPi.so
 
 #DEBUG	= -g -O0
 DEBUG	= -O2
@@ -74,11 +79,11 @@ static:
 
 $(DYNAMIC):	$(OBJ)
 	$Q echo "[Link (Dynamic)]"
-	$Q arm-linux-gnueabihf-gcc -shared -Wl,-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
+	$Q $(ARM_GCC) -shared -Wl,-soname,libwiringPi.so$(WIRINGPI_SONAME_SUFFIX) -o libwiringPi.so.$(VERSION) $(LIBS) $(OBJ)
 
 .c.o:
 	$Q echo [Compile] $<
-	$Q arm-linux-gnueabihf-gcc -c $(CFLAGS) $< -o $@
+	$Q $(ARM_GCC) -c $(CFLAGS) $< -o $@
 
 
 .PHONY:	clean
