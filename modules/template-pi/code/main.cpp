@@ -1,12 +1,12 @@
 
 #include <hwlib.hpp>
+#include <iostream>
 
 int main(void) {
-    hwlib::cout << "Raspberry Pi blink\n";
+    hwlib::target::init();  
+    std::cout << "Raspberry Pi blink\n";
 
-    hwlib::target::init();
-
-    auto led = hwlib::target::pin_out(hwlib::target::pins::d3);
+    auto led = hwlib::target::pin_out(hwlib::target::pins::d40);
 
     while (true) {
         led.write(true); // on
