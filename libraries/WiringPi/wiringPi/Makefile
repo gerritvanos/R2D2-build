@@ -27,7 +27,7 @@ PREFIX?=/local
 LDCONFIG?=ldconfig
 
 ifeq ($(OS),Windows_NT)
-	ARM_GCC = ..\\..\\..\\programs\\rpi3_gcc\\bin\\armv8-rpi3-linux-gnueabihf-gcc.exe
+	ARM_GCC = ..\\..\\..\\programs\\rpi_gcc\\bin\\armv8-rpi3-linux-gnueabihf-gcc.exe
 else
 	ARM_GCC = arm-linux-gnueabihf-gcc
 endif
