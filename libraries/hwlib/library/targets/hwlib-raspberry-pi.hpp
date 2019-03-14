@@ -23,7 +23,7 @@
 
 #include <wiringPi.h>
 
-namespace rpi3 {
+namespace raspberry_pi {
 
 /// raspbery pi 3 pin names
 ///
@@ -82,7 +82,15 @@ const pin_info_type & HWLIB_WEAK pin_info( pins name ){
    }
    return pin_info_array[ n ];
 }
-   
+
+/**
+ * @brief inits wiringpi
+ * 
+ */
+static void init(){
+   wiringPiSetup();
+}
+
 /// pin_in implementation for an RPI
 class pin_in : public hwlib::pin_in {
 private:
@@ -157,26 +165,44 @@ public:
 
 namespace hwlib {
 
-namespace target = ::rpi3;
-   
-#ifdef _HWLIB_ONCE
+namespace target = ::raspberry_pi;
 
-void HWLIB_WEAK wait_us_asm( int n ){ 
-    // TODO add wait
-}
+void wait_ns( int_fast32_t n );
+void wait_us( int_fast32_t n );
+void wait_ms( int_fast32_t n ); 
 
-void HWLIB_WEAK wait_us_busy( int_fast32_t n ){ 
-    // TODO add wait
-} 
+#define HWLIB_USE_HW_UART 
 
 void HWLIB_WEAK uart_putc( char c ){
-    // TODO add serial
+   //TODO add uart
 }
 
-char HWLIB_WEAK uart_getc(){
-    // TODO add serial
+bool HWLIB_WEAK uart_char_available(){
+   return false; // TODO add uart
 }
 
+char HWLIB_WEAK uart_getc( ){
+   return 'A'; // TODO add uart
+}
+
+#ifdef _HWLIB_ONCE
+
+uint64_t now_ns(){
+   return micros() * 1000;
+}   
+
+uint64_t now_us(){
+   return micros();
+}   
+
+uint64_t now_ms(){
+   return millis();
+}   
+
+void HWLIB_WEAK wait_us_busy( int_fast32_t n ){
+   auto end = now_us() + n;
+   while( now_us() < end ){}
+}
 
 #endif
 
