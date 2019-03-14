@@ -13,8 +13,8 @@
 // this file contains Doxygen lines
 /// @file
 
-#ifndef HWLIB_RPI3_H
-#define HWLIB_RPI3_H
+#ifndef HWLIB_RASPBERRY_PI_H
+#define HWLIB_RASPBERRY_PI_H
 
 #define _HWLIB_TARGET_WAIT_US_BUSY
 #include HWLIB_INCLUDE( ../hwlib-all.hpp )
@@ -177,7 +177,7 @@ public:
 
 };
 
-}; // namespace rpi3
+}; // namespace HWLIB_RASPBERRY_PI_H
 
 namespace hwlib {
 
