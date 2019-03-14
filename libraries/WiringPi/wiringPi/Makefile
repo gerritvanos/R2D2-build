@@ -21,7 +21,7 @@
 #    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
 #################################################################################
 
-VERSION=$(shell cat ../VERSION)
+VERSION=2.5
 DESTDIR?=/usr
 PREFIX?=/local
 
