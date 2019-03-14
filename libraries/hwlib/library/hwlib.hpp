@@ -58,6 +58,12 @@
 #endif
 
 /// - HWLIB_TARGET_native : native target (Windows or Linux PC)
+#ifdef HWLIB_TARGET_raspberry_pi
+   #define HWLIB_TARGET
+   #include HWLIB_INCLUDE( targets/hwlib-raspberry-pi.hpp )
+#endif
+
+/// - HWLIB_TARGET_native : native target (Windows or Linux PC)
 #ifdef HWLIB_TARGET_native
    #define HWLIB_TARGET
    #include HWLIB_INCLUDE( targets/hwlib-native.hpp )
