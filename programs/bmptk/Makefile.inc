@@ -1324,7 +1324,7 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
    #=========================================================================
 
 $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so:
-	@echo "Building WiringPi\n"
+	@echo 'Building WiringPi'
 ifeq ($(OS),Windows_NT)
 		cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
 else
