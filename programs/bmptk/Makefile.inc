@@ -438,10 +438,9 @@ ifeq ($(TARGET), raspberry_pi)
    TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
    TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
    TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
+   ALL_LIBRARIES     += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
-   # RUN               ?= ./$(EXE)
-   # RUN_PAUSE         ?= $(PAUSE)
    XTAL              ?= 1000000   
 endif
 
@@ -1317,7 +1316,18 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking PYD target: $(PYD)'
 	$(LINKER) -shared -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES) $(PYTHON_DLLS)
 	@echo ' '  
-      
+
+   #=========================================================================
+	#
+	# How to make the wiringpi library
+	#
+   #=========================================================================
+
+$(HWLIB)/../wiringPi/wiringPi/libwiringPi.so:
+	@echo "Building WiringPi\n"
+	cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+	@echo ' '
+
    #=========================================================================
    #
    # calculated size stack
