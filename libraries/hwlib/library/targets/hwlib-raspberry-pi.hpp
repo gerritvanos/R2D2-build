@@ -118,6 +118,22 @@ public:
    
    void refresh() override {}
    
+   void pullup_enable(){
+      pullUpDnControl(wiring_pi, 2);
+   }
+
+   void pullup_disable(){
+      pullUpDnControl(wiring_pi, 0);
+   }
+
+   void pulldown_enable(){
+      pullUpDnControl(wiring_pi, 1);
+   }
+
+   void pulldown_disable(){
+      pullUpDnControl(wiring_pi, 0);
+   }
+
 };
 
 /// pin_out implementation for a ATMega328P
