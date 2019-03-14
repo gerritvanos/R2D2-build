@@ -438,7 +438,7 @@ ifeq ($(TARGET), raspberry_pi)
    TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
    TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
    TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
-   ALL_LIBRARIES     += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
+   LIBS              += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
    XTAL              ?= 1000000   
@@ -1325,7 +1325,11 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 
 $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so:
 	@echo "Building WiringPi\n"
-	cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+ifeq ($(OS),Windows_NT)
+		cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+else
+		cd $(HWLIB)/../wiringPi/wiringPi/ & make
+endif
 	@echo ' '
 
    #=========================================================================
