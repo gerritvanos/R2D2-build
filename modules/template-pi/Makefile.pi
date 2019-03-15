@@ -23,6 +23,8 @@
 # settings for Arduino Due projects
 TARGET            ?= raspberry_pi
 
+WIRINGPI          ?= ../../../libraries/WiringPi/wiringPi
+
 # enable exeptions (disabled by default by bmptk)
 PROJECT_CPP_FLAGS += -fexceptions 
 

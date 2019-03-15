@@ -435,9 +435,9 @@ ifeq ($(TARGET), raspberry_pi)
 
    CHIP              := raspberry_pi
    PREFIX            := $(GCC-RPI)$(ARM-RPI)-
-   TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
-   TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
-   TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
+   TARGET_CPP_FLAGS  += -I$(WIRINGPI) -L$(WIRINGPI)
+   TARGET_C_FLAGS    += -I$(WIRINGPI) -L$(WIRINGPI) 
+   TARGET_LN_FLAGS   += -I$(WIRINGPI) -L$(WIRINGPI) -l:libwiringPi.so
    LIBS              += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
