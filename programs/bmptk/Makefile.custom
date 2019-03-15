@@ -39,6 +39,9 @@ ifeq ($(OS),Windows_NT)
    #GCC-AVR         ?= $(WPF32)/Arduino/hardware/tools/avr
    #GCC-AVR         ?= $(WPF32)/Atmel/Atmel Toolchain/AVR8 GCC/Native/3.4.1061/avr8-gnu-toolchain
 
+   # raspberry pi 2/3 gcc location
+   GCC-RPI         ?= ../../../programs/rpi_gcc
+
    # the ARM toolchain
    GCC-ARM         ?= ../../../programs/8 2018-q4-major
    #GCC-ARM         ?= $(WPF32)/GNU Tools ARM Embedded/5.4 2016q3
