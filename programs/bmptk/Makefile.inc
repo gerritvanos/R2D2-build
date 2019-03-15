@@ -1302,7 +1302,7 @@ $(EXE): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 # How to make an .out executable by linking all objects
 $(OUT): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking OUT target: $(OUT)'
-	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
+	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(ALL_LIBRARIES)
 	@echo ' '
 
 # How to make an .dll dynamic link library by linking all objects
