@@ -1,6 +1,5 @@
-
-#include <hwlib.hpp>
 #include <iostream>
+#include <hwlib.hpp>
 
 int main(void) {
     hwlib::target::init();  
