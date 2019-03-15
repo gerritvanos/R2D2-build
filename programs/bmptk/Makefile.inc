@@ -1323,12 +1323,12 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	#
    #=========================================================================
 
-$(HWLIB)/../wiringPi/wiringPi/libwiringPi.so:
+$(WIRINGPI)/libwiringPi.so:
 	@echo 'Building WiringPi'
 ifeq ($(OS),Windows_NT)
-		cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+		cd $(WIRINGPI) & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
 else
-		cd $(HWLIB)/../wiringPi/wiringPi/ & make
+		cd $($(WIRINGPI)) & make
 endif
 	@echo ' '
 
