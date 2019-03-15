@@ -438,7 +438,7 @@ ifeq ($(TARGET), raspberry_pi)
    TARGET_CPP_FLAGS  += -I$(WIRINGPI) -L$(WIRINGPI)
    TARGET_C_FLAGS    += -I$(WIRINGPI) -L$(WIRINGPI) 
    TARGET_LN_FLAGS   += -I$(WIRINGPI) -L$(WIRINGPI) -lwiringPi
-   EXTRA_DEP         += $(WIRINGPI)/libwiringPi.so
+   LIBS              += $(WIRINGPI)/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
    XTAL              ?= 1000000   
@@ -1300,7 +1300,7 @@ $(EXE): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '  
       
 # How to make an .out executable by linking all objects
-$(OUT): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES) $(EXTRA_DEP)
+$(OUT): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking OUT target: $(OUT)'
 	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '
