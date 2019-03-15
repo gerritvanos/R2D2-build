@@ -67,7 +67,7 @@ SRC	=	wiringPi.c						\
 		pseudoPins.c						\
 		wpiExtensions.c
 
-HEADERS =	$(shell ls *.h)
+HEADERS =	$(wildcard headers/*.h)
 
 OBJ	=	$(SRC:.c=.o)
 
