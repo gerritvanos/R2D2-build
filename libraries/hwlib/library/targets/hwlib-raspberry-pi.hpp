@@ -25,9 +25,10 @@
 
 namespace raspberry_pi {
 
-/// raspbery pi 3 pin names
+/// raspbery pi 2/3 pin names
 ///
-/// These are the pins of an Arduino Uno board.
+/// These are the pins of the raspberry pi 2/3. 
+/// These pins are the actual pin position so d3 is pin 3 on the pi
 enum class pins {
    d3, d5, d7, d8, d10, d11, d12, d13, d15, d16, 
    d18, d19, d21, d22, d23, d24, d26, d27, d28, 
@@ -91,7 +92,7 @@ static void init(){
    wiringPiSetup();
 }
 
-/// pin_in implementation for an RPI
+/// pin_in implementation for an raspberry pi 2/3
 class pin_in : public hwlib::pin_in {
 private:
    uint8_t wiring_pi;
@@ -136,7 +137,7 @@ public:
 
 };
 
-/// pin_out implementation for a ATMega328P
+/// pin_out implementation for a the raspberry pi 2/3
 class pin_out : public hwlib::pin_out {
 private:
    uint8_t wiring_pi;
@@ -144,9 +145,9 @@ private:
    
 public:
 
-   /// Arduino Uno pin_out constructor from ATMega328P port/pin numbers
+   /// Raspberry pi pin_out constructor from raspberry pi 2/3 wiring_pi and rpi_bcm
    ///
-   /// This call creates a pin_out from an ATMega328P port/pin
+   /// This call creates a pin_out from an raspberry pi 2/3 wiring_pi and rpi_bcm
    /// number pair.
    ///
    /// This constructor sets the pin direction to output.
@@ -157,9 +158,9 @@ public:
        pinMode(wiring_pi, OUTPUT);
    }
    
-   /// Arduino Uno pin_out constructor from an Uno pin name
+   /// Raspberry pi pin_out constructor from raspberry pi 2/3 pin name
    ///
-   /// This call creates a pin_out from an Arduino Uno pin name.
+   /// This call creates a pin_out from an raspberry pi 2/3 pin name.
    ///
    /// This constructor sets the pin direction to output.
    pin_out( pins name ): 
