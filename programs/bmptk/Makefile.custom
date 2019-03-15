@@ -31,7 +31,7 @@ ifeq ($(OS),Windows_NT)
    # the windows toolchain
    #GCC-WIN         ?= C:/TDM-GCC-64
    #GCC-WIN         ?= $(WPF32)/mingw-w64/i686-6.2.0-posix-dwarf-rt_v5-rev1/mingw32
-   GCC-WIN         ?= C:/Program Files (x86)/mingw-w64/i686-7.3.0-posix-dwarf-rt_v5-rev0/mingw32
+   GCC-WIN         ?= ../../../programs/mingw32
    #GCC-WIN         ?= C:/MinGW
 
    # select the AVR toolchain: Atmel (=default) or Arduino
@@ -46,7 +46,7 @@ ifeq ($(OS),Windows_NT)
    ARM-RPI        ?= armv8-rpi3-linux-gnueabihf
 
    # the ARM toolchain
-   GCC-ARM         ?= C:/SysGCC/arm-none-eabi
+   GCC-ARM         ?= ../../../programs/8 2018-q4-major
    #GCC-ARM         ?= $(WPF32)/GNU Tools ARM Embedded/5.4 2016q3
    #GCC-ARM         ?= C:/gcc-arm-none-eabi-4_9-141220
 
