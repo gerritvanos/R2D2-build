@@ -494,7 +494,7 @@ public:
 /// - <a href="https://en.wikipedia.org/wiki/I2C">
 ///    I2C Bus</A> (wikipedia)
 ///
-class i2c_bus : protected i2c_primitives {
+class i2c_bus : public i2c_primitives {
 protected:
 
    i2c_bus():
