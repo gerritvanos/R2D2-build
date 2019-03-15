@@ -438,7 +438,7 @@ ifeq ($(TARGET), raspberry_pi)
    TARGET_CPP_FLAGS  += -I$(WIRINGPI) -L$(WIRINGPI)
    TARGET_C_FLAGS    += -I$(WIRINGPI) -L$(WIRINGPI) 
    TARGET_LN_FLAGS   += -I$(WIRINGPI) -L$(WIRINGPI) -l:libwiringPi.so
-   LIBS              += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
+   LIBS              += $(WIRINGPI)/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
    XTAL              ?= 1000000   
