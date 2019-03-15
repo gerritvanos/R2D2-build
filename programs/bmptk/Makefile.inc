@@ -434,7 +434,7 @@ ifeq ($(TARGET), raspberry_pi)
    $(eval $(All_Targets))
 
    CHIP              := raspberry_pi
-   PREFIX            := $(GCC-RPI)/bin/armv8-rpi3-linux-gnueabihf-
+   PREFIX            := $(GCC-RPI)$(ARM-RPI)-
    TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
    TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
    TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
