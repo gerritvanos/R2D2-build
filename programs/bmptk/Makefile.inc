@@ -1328,7 +1328,7 @@ $(WIRINGPI)/libwiringPi.so:
 ifeq ($(OS),Windows_NT)
 		cd $(WIRINGPI) & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
 else
-		cd $(WIRINGPI) & make
+		(cd $(WIRINGPI) && make)
 endif
 	@echo ' '
 
