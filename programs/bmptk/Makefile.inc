@@ -450,7 +450,7 @@ define Windows
    PREFIX            := $(GCC-WIN)/bin/
    TARGET_CPP_FLAGS  += -mno-ms-bitfields   
    TARGET_C_FLAGS    += -mno-ms-bitfields   
-   TARGET_LN_FLAGS   += -L../../../libraries/libusb/MinGW64/static -l:libusb-1.0.a
+   LIBS              += ../../../libraries/libusb/MinGW32/static/libusb-1.0.a
    RESULTS           += $(EXE)
    export PATH       := $PREFIX:$(PATH)
    RUN               ?= ./$(EXE)
