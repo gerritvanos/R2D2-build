@@ -21,7 +21,7 @@
 
 #define register
 #include "sam.h"
-#include "usart_queue.hpp"
+//#include "usart_queue.hpp"
 
 #include HWLIB_INCLUDE( hwlib-arduino-due-system-sam3xa.inc )
 
@@ -897,11 +897,6 @@ public:
 
 class usart_bus {
 private:
-//    Pio & tx_port;
-//    Pio & rx_port;
-//    uint32_t tx_mask;
-//    uint32_t rx_mask;
-
     Usart * hardwareUSART = nullptr;
     unsigned int baudrate = BMPTK_BAUDRATE;
     int n;
@@ -910,7 +905,10 @@ private:
     Queue<uint8_t, 250> input_buffer;
    
     inline uint8_t receive_byte(){
-        return hardwareUSART->US_RHR;
+        if (hardwareUSART) {
+            return hardwareUSART->US_RHR;
+        }
+        return 0;
     }
 
     unsigned int available() {
@@ -927,7 +925,9 @@ private:
 
     void send_byte(const uint8_t &b){
         while (!tx_ready());
-        hardwareUSART->US_THR = b;
+        if (hardwareUSART) {
+            hardwareUSART->US_THR = b;
+        }
     }
     inline bool tx_ready(){
         return (hardwareUSART->US_CSR & 2);
@@ -935,28 +935,13 @@ private:
 
 public:
     usart_bus(
-//        uint32_t tx_port_number, 
-//        uint32_t rx_port_number, 
-//        uint32_t tx_pin_number, 
-//        uint32_t rx_pin_number,
         int n 
     ):
-//        tx_port{port_registers(tx_port_number)},
-//        rx_port{port_registers(rx_port_number)},
-//        tx_mask{0x1U << tx_pin_number },
-//        rx_mask{0x1U << rx_pin_number },
         n(n)
-    {
-//        tx_port.PIO_OER = tx_mask;
-//        rx_port.PIO_ODR = rx_mask;
-    }
+    {}
 
     usart_bus( uart_ports name ):
         usart_bus{
-//            uart_port_info( name ).tx.port,
-//            uart_port_info( name ).rx.port,
-//            uart_port_info( name ).tx.pin,
-//            uart_port_info( name ).rx.pin,
             uart_port_info( name ).n
             }
     {}
@@ -1015,7 +1000,6 @@ public:
 
         unsigned long long int master_clock = 84000000;
         hardwareUSART->US_BRGR = (master_clock / boudrate) /16;
-        hwlib::cout << "0x" << hwlib::hex << hardwareUSART->US_BRGR << hwlib::endl;
         hardwareUSART->US_MR = UART_MR_PAR_NO | UART_MR_CHMODE_NORMAL | US_MR_NBSTOP_1_BIT | US_MR_CHRL_8_BIT;
 
         hardwareUSART->US_IDR = 0xFFFFFF;
@@ -1051,11 +1035,15 @@ public:
     }
 
     inline void enable() {
-        hardwareUSART->US_CR = UART_CR_RXEN | UART_CR_TXEN;
+        if (hardwareUSART) { 
+            hardwareUSART->US_CR = UART_CR_RXEN | UART_CR_TXEN;
+        }
     }
 
     inline void disable() {
-        hardwareUSART->US_CR = UART_CR_RSTRX | UART_CR_RSTTX | UART_CR_RXDIS | UART_CR_TXDIS;
+        if (hardwareUSART) {
+            hardwareUSART->US_CR = UART_CR_RSTRX | UART_CR_RSTTX | UART_CR_RXDIS | UART_CR_TXDIS;
+        }
     }
 
     
