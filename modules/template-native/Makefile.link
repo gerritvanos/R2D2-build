@@ -8,7 +8,9 @@
 # 
 #############################################################################
 
+#add libusb
 
+SEARCH 			  += ../../../libraries/libusb/include/libusb-1.0
 # add Catch
 SEARCH            += ../../../libraries/Catch2/single_include/catch2
 
