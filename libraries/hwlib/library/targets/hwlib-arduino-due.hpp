@@ -21,7 +21,6 @@
 
 #define register
 #include "sam.h"
-//#include "usart_queue.hpp"
 
 #include HWLIB_INCLUDE( hwlib-arduino-due-system-sam3xa.inc )
 
