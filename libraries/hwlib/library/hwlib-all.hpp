@@ -88,5 +88,7 @@
 #include HWLIB_INCLUDE( peripherals/hwlib-glcd-oled.hpp )
 #include HWLIB_INCLUDE( peripherals/hwlib-matrix-keypad.hpp )
 
+#include HWLIB_INCLUDE( data-structures/hwlib-priority-queue.hpp )
+
 
 #endif // HWLIB_ALL_H

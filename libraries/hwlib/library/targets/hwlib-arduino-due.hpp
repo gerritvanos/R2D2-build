@@ -71,7 +71,7 @@ enum class pins {
    a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11,
    dac0, dac1, canrx, cantx,
    scl, sda, scl1, sda1,
-   tx, rx, led, 
+   tx, rx, tx1, rx1, tx2, rx2, tx3, rx3, led, 
    sck, miso, mosi, cs0, cs1,
 /// \cond INTERNAL    
    SIZE_THIS_IS_NOT_A_PIN
@@ -173,6 +173,12 @@ const HWLIB_WEAK pin_info_type & pin_info( pins name ){
    
       { 0,  9 },  // tx
       { 0,  8 },  // rx
+      { 0, 11 },  // tx1
+      { 0, 10 },  // rx1
+      { 0, 13 },  // tx2
+      { 0, 12 },  // rx2
+      { 3,  4 },  // tx3
+      { 3,  5 },  // rx3
       { 1, 27 },  // led
 
       { 0, 27 },  // sck
@@ -233,7 +239,34 @@ const HWLIB_WEAK ad_pin_info_type & ad_pin_info( ad_pins name ){
       HWLIB_PANIC_WITH_LOCATION;
    }   
    return ad_pin_info_array[ n ];
-}   
+} 
+
+enum class uart_ports {
+    uart0, uart1, uart2, uart3
+        , UART_SIZE_THIS_IS_NOT_A_PORT
+};
+
+struct uart_port_info_type {
+    pin_info_type rx; 
+    pin_info_type tx;
+    int n;
+};
+
+const HWLIB_WEAK uart_port_info_type & uart_port_info(uart_ports name){
+    
+    static const uart_port_info_type uart_port_info_array[(int) uart_ports::UART_SIZE_THIS_IS_NOT_A_PORT] = {
+        {{ 0, 8 }, { 0, 9 }, 0},
+        {{ 0, 10 }, { 0, 11 }, 1},
+        {{ 0, 12 }, { 0, 13 }, 2},
+        {{ 3, 5 }, { 3, 5 }, 3}
+
+    };
+    uint_fast8_t n = static_cast< uint_fast8_t>(name);
+    if(n >= static_cast< uint_fast8_t >( uart_ports::UART_SIZE_THIS_IS_NOT_A_PORT )){
+        HWLIB_PANIC_WITH_LOCATION;
+    }
+    return uart_port_info_array[ n ];
+}
 
 struct ad_seq_type {
    uint32_t seq1;
@@ -859,6 +892,160 @@ public:
       // return the conversion result
       return ADC->ADC_CDR[ channel ] & 0x0000'0FFF;
    }
+};
+
+class usart_bus {
+private:
+    Usart * hardwareUSART = nullptr;
+    unsigned int baudrate = BMPTK_BAUDRATE;
+    int n;
+    bool USART_controller_initialized = false;
+
+    Queue<uint8_t, 250> input_buffer;
+   
+    inline uint8_t receive_byte(){
+        if (hardwareUSART) {
+            return hardwareUSART->US_RHR;
+        }
+        return 0;
+    }
+
+    unsigned int available() {
+        if (!USART_controller_initialized) {
+            return 0;
+        }
+
+        if ((hardwareUSART->US_CSR & 1) != 0) {
+            input_buffer.push(receive_byte());
+        
+        }
+        return input_buffer.count();
+    }
+
+    void send_byte(const uint8_t &b){
+        while (!tx_ready());
+        if (hardwareUSART) {
+            hardwareUSART->US_THR = b;
+        }
+    }
+    inline bool tx_ready(){
+        return (hardwareUSART->US_CSR & 2);
+    }
+
+public:
+    usart_bus(
+        int n 
+    ):
+        n(n)
+    {}
+
+    usart_bus( uart_ports name ):
+        usart_bus{
+            uart_port_info( name ).n
+            }
+    {}
+
+    ~usart_bus(){
+        disable();
+    }
+
+    void begin(unsigned int boudrate = BMPTK_BAUDRATE){
+        if (USART_controller_initialized) {
+            return;
+        }
+        baudrate = boudrate;
+        if( n == 1 ){
+            hardwareUSART = USART0;
+
+            PIOA->PIO_PDR = PIO_PA10;
+			PIOA->PIO_ABSR &= ~PIO_PA10;
+			PIOA->PIO_PDR = PIO_PA11;
+            PIOA->PIO_ABSR &= ~PIO_PA11;
+
+            PMC->PMC_PCER0 = (0x01 << ID_USART0);
+        
+        } else if (n == 2){
+            hardwareUSART = USART1;
+
+            PIOA->PIO_PDR = PIO_PA12;
+			PIOA->PIO_ABSR &= ~PIO_PA12;
+			PIOA->PIO_PDR = PIO_PA13;
+            PIOA->PIO_ABSR &= ~PIO_PA13;
+
+            PMC->PMC_PCER0 = (0x01 << ID_USART1);
+        } else if (n == 3){
+//          It dont work 
+            hardwareUSART = USART3;
+
+			PIOD->PIO_PDR = PIO_PD4;
+			PIOD->PIO_ABSR |= PIO_PD4;
+			PIOD->PIO_PDR = PIO_PD5;
+            PIOD->PIO_ABSR |= PIO_PD5;
+
+            PMC->PMC_PCER0 = (0x01 << ID_USART3); 
+        } else if (n == 0) {
+            // NO!
+/*              hardwareUSART = UART;
+
+            PIOA->PIO_PDR   = PIO_PA8; 
+	        PIOA->PIO_ABSR &= ~PIO_PA8; 
+	        PIOA->PIO_PDR   = PIO_PA9; 
+	        PIOA->PIO_ABSR &= ~PIO_PA9;
+        
+            PMC->PMC_PCER0 = ( 0x01 << ID_UART );*/
+        }
+        
+        disable();
+
+        unsigned long long int master_clock = 84000000;
+        hardwareUSART->US_BRGR = (master_clock / boudrate) /16;
+        hardwareUSART->US_MR = UART_MR_PAR_NO | UART_MR_CHMODE_NORMAL | US_MR_NBSTOP_1_BIT | US_MR_CHRL_8_BIT;
+
+        hardwareUSART->US_IDR = 0xFFFFFF;
+
+        enable();
+
+        USART_controller_initialized = true;
+    }
+
+    bool send(const uint8_t c){
+        send_byte(c);
+        return true;
+    }
+
+    uint8_t receive() {
+        if( !USART_controller_initialized || !input_buffer.count()) {
+            return 0;
+        }
+
+        return input_buffer.pop();
+    }
+
+    char getc() {
+        if (available() > 0) {
+            return receive();
+        }
+
+        return 0;
+    }
+
+    bool char_available(){
+        return (available() > 0);
+    }
+
+    inline void enable() {
+        if (hardwareUSART) { 
+            hardwareUSART->US_CR = UART_CR_RXEN | UART_CR_TXEN;
+        }
+    }
+
+    inline void disable() {
+        if (hardwareUSART) {
+            hardwareUSART->US_CR = UART_CR_RSTRX | UART_CR_RSTTX | UART_CR_RXDIS | UART_CR_TXDIS;
+        }
+    }
+
+    
 };
 
 /// the number of ticks per us
