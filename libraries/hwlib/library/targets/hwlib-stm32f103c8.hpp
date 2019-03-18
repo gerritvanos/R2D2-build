@@ -16,7 +16,7 @@
 #ifndef HWLIB_STM32F103C8_H
 #define HWLIB_STM32F103C8_H
 
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 
 // the STM header files use 'register' in the pre-C++17 sense
 #define register

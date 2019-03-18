@@ -9,19 +9,16 @@
 #ifndef _HWLIB_INCLUDED
 #define _HWLIB_INCLUDED
 
-#define HWLIB_QUOTE( FILE ) #FILE
-#define HWLIB_INCLUDE( FILE ) HWLIB_QUOTE( ../library/FILE )
-
 #if defined(ARDUINO_ARCH_AVR)
    #define _HWLIB_TARGET_OK
    #undef putc
    #undef abs
-   #include HWLIB_INCLUDE( hwlib-arduino-uno.hpp )
+   #include "../library/hwlib-arduino-uno.hpp"
 #endif
 
 #if defined(ARDUINO_ARCH_SAM)
    #define _HWLIB_TARGET_OK
-   #include HWLIB_INCLUDE( hwlib-arduino-due.hpp )
+   #include "../library/hwlib-arduino-due.hpp"
 #endif
 
 #ifndef _HWLIB_TARGET_OK

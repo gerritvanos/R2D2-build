@@ -18,7 +18,7 @@
 
 #define _HWLIB_TARGET_WAIT_NS_BUSY
 #define _HWLIB_TARGET_WAIT_US_BUSY
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 
 // the LPC header file use 'register' in the pre-C++17 sense
 #define register

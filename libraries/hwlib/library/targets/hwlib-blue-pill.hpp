@@ -16,6 +16,6 @@
 #ifndef HWLIB_BLUE_PILL_H
 #define HWLIB_BLUE_PILL_H
 
-#include HWLIB_INCLUDE( hwlib-stm32f103c8.hpp )
+#include "hwlib-stm32f103c8.hpp"
 
 #endif // #ifdef HWLIB_BLUE_PILL_H

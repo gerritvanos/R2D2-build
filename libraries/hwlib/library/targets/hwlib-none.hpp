@@ -16,7 +16,7 @@
 #ifndef HWLIB_NONE_H
 #define HWLIB_NONE_H
 
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 
 namespace hwlib {
 	

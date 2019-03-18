@@ -16,7 +16,7 @@
 #ifndef HWLIB_FRDM_KL27Z_H
 #define HWLIB_FRDM_KL27Z_H
 
-#include HWLIB_INCLUDE( hwlib-all.hpp )
+#include "hwlib-all.hpp"
 #include "MKL27Z644.h"
 
 namespace frdm_kl27z {

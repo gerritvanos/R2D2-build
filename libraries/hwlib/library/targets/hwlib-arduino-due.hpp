@@ -17,12 +17,12 @@
 #define HWLIB_ARDUINO_DUE_H
 
 #define _HWLIB_TARGET_WAIT_US_BUSY
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 
 #define register
 #include "sam.h"
 
-#include HWLIB_INCLUDE( hwlib-arduino-due-system-sam3xa.inc )
+#include "hwlib-arduino-due-system-sam3xa.inc"
 
 /// \brief
 /// hwlib HAL for the Arduino Due

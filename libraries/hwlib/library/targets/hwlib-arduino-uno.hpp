@@ -17,7 +17,7 @@
 #define HWLIB_UNO_H
 
 #define _HWLIB_TARGET_WAIT_US_BUSY
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 
 #include <stdint.h>
 

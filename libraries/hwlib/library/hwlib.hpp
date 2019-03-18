@@ -19,42 +19,39 @@
 #ifndef HWLIB_H
 #define HWLIB_H
 
-#define HWLIB_QUOTE( FILE ) #FILE
-#define HWLIB_INCLUDE( FILE ) HWLIB_QUOTE( FILE )
-
 /// - HWLIB_TARGET_db103 : DB103 board (LPC1114FN28/102 chip)
 #ifdef HWLIB_TARGET_db103
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-db103.hpp )
+   #include "targets/hwlib-db103.hpp"
 #endif
 
 /// - HWLIB_TARGET_arduino_uno : Arduino Uno (ATMega328P chip)
 #ifdef HWLIB_TARGET_arduino_uno
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-arduino-uno.hpp )
+   #include "targets/hwlib-arduino-uno.hpp"
 #endif
 
 /// - HWLIB_TARGET_arduino_due : Arduino Due(ATSAM3X8E chip chip)
 #ifdef HWLIB_TARGET_arduino_due
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-arduino-due.hpp )
+   #include "targets/hwlib-arduino-due.hpp"
 #endif
 
 /// - HWLIB_TARGET_blue_pill : Blue Pill board (stm32f103c8 chip)
 #ifdef HWLIB_TARGET_blue_pill
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-blue-pill.hpp )
+   #include "targets/hwlib-blue-pill.hpp"
 #endif
 
 /// - HWLIB_TARGET_stm32f103c8 : stm32f103c8 chip
 #ifdef HWLIB_TARGET_stm32f103c8
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-stm32f103c8.hpp )
+   #include "targets/hwlib-stm32f103c8.hpp"
 #endif
 
 #ifdef BMPTK_TARGET_scouting_lock
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( hwlib-scouting-lock.hpp )
+   #include "hwlib-scouting-lock.hpp"
 #endif
 
 /// - HWLIB_TARGET_native : native target (Windows or Linux PC)
@@ -66,17 +63,17 @@
 /// - HWLIB_TARGET_native : native target (Windows or Linux PC)
 #ifdef HWLIB_TARGET_native
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-native.hpp )
+   #include "targets/hwlib-native.hpp"
 #endif
 
 #ifdef HWLIB_TARGET_pyd
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-native.hpp )
+   #include "targets/hwlib-native.hpp"
 #endif
 
 #ifndef HWLIB_TARGET
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-none.hpp )
+   #include "targets/hwlib-none.hpp"
 #endif
 
 #endif // HWLIB_ALL_H

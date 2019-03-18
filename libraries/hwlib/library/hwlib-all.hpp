@@ -30,63 +30,63 @@
 //#include <stddef.h>
 #include <type_traits>
 
-#include HWLIB_INCLUDE( core/hwlib-defines.hpp )
-#include HWLIB_INCLUDE( core/hwlib-panic.hpp )
-#include HWLIB_INCLUDE( core/hwlib-common.hpp )
-#include HWLIB_INCLUDE( core/hwlib-wait.hpp )
+#include "core/hwlib-defines.hpp"
+#include "core/hwlib-panic.hpp"
+#include "core/hwlib-common.hpp"
+#include "core/hwlib-wait.hpp"
 
-#include HWLIB_INCLUDE( pins/hwlib-pin.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-dummies.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-stores.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-from-pin.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-invert.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-all.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-direct.hpp )
-#include HWLIB_INCLUDE( pins/hwlib-pin-demos.hpp )
+#include "pins/hwlib-pin.hpp"
+#include "pins/hwlib-pin-dummies.hpp"
+#include "pins/hwlib-pin-stores.hpp"
+#include "pins/hwlib-pin-from-pin.hpp"
+#include "pins/hwlib-pin-invert.hpp"
+#include "pins/hwlib-pin-all.hpp"
+#include "pins/hwlib-pin-direct.hpp"
+#include "pins/hwlib-pin-demos.hpp"
 
-#include HWLIB_INCLUDE( ports/hwlib-port.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-from-port.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-from-pins.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-invert.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-all.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-direct.hpp )
-#include HWLIB_INCLUDE( ports/hwlib-port-demos.hpp )
+#include "ports/hwlib-port.hpp"
+#include "ports/hwlib-port-from-port.hpp"
+#include "ports/hwlib-port-from-pins.hpp"
+#include "ports/hwlib-port-invert.hpp"
+#include "ports/hwlib-port-all.hpp"
+#include "ports/hwlib-port-direct.hpp"
+#include "ports/hwlib-port-demos.hpp"
 
-#include HWLIB_INCLUDE( char-io/hwlib-ostream.hpp )
-#include HWLIB_INCLUDE( char-io/hwlib-istream.hpp )
-#include HWLIB_INCLUDE( char-io/hwlib-bb-uart.hpp )
-#include HWLIB_INCLUDE( char-io/hwlib-console.hpp )
-#include HWLIB_INCLUDE( core/hwlib-xy.hpp )
-#include HWLIB_INCLUDE( char-io/hwlib-terminal.hpp )
-#include HWLIB_INCLUDE( char-io/hwlib-terminal-demos.hpp )
+#include "char-io/hwlib-ostream.hpp"
+#include "char-io/hwlib-istream.hpp"
+#include "char-io/hwlib-bb-uart.hpp"
+#include "char-io/hwlib-console.hpp"
+#include "core/hwlib-xy.hpp"
+#include "char-io/hwlib-terminal.hpp"
+#include "char-io/hwlib-terminal-demos.hpp"
 
-#include HWLIB_INCLUDE( core/hwlib-test.hpp )
-#include HWLIB_INCLUDE( core/hwlib-string.hpp )
+#include "core/hwlib-test.hpp"
+#include "core/hwlib-string.hpp"
 
-#include HWLIB_INCLUDE( core/hwlib-adc.hpp )
-#include HWLIB_INCLUDE( core/hwlib-dac.hpp )
-#include HWLIB_INCLUDE( core/hwlib-dac-demos.hpp )
-#include HWLIB_INCLUDE( core/hwlib-i2c.hpp )
-#include HWLIB_INCLUDE( core/hwlib-spi.hpp )
+#include "core/hwlib-adc.hpp"
+#include "core/hwlib-dac.hpp"
+#include "core/hwlib-dac-demos.hpp"
+#include "core/hwlib-i2c.hpp"
+#include "core/hwlib-spi.hpp"
 
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-color.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-image.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-font.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-window.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-drawables.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-window-decorators.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-window-demos.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-window-terminal.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-font-8x8.hpp )
-#include HWLIB_INCLUDE( graphics/hwlib-graphics-font-16x16.hpp )
+#include "graphics/hwlib-graphics-color.hpp"
+#include "graphics/hwlib-graphics-image.hpp"
+#include "graphics/hwlib-graphics-font.hpp"
+#include "graphics/hwlib-graphics-window.hpp"
+#include "graphics/hwlib-graphics-drawables.hpp"
+#include "graphics/hwlib-graphics-window-decorators.hpp"
+#include "graphics/hwlib-graphics-window-demos.hpp"
+#include "graphics/hwlib-graphics-window-terminal.hpp"
+#include "graphics/hwlib-graphics-font-8x8.hpp"
+#include "graphics/hwlib-graphics-font-16x16.hpp"
 
-#include HWLIB_INCLUDE( peripherals/hwlib-pcf8574.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-pcf8591.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-hc595.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-hd44780.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-glcd-5510.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-glcd-oled.hpp )
-#include HWLIB_INCLUDE( peripherals/hwlib-matrix-keypad.hpp )
+#include "peripherals/hwlib-pcf8574.hpp"
+#include "peripherals/hwlib-pcf8591.hpp"
+#include "peripherals/hwlib-hc595.hpp"
+#include "peripherals/hwlib-hd44780.hpp"
+#include "peripherals/hwlib-glcd-5510.hpp"
+#include "peripherals/hwlib-glcd-oled.hpp"
+#include "peripherals/hwlib-matrix-keypad.hpp"
 
 #include HWLIB_INCLUDE( data-structures/hwlib-priority-queue.hpp )
 

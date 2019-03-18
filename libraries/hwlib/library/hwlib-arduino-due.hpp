@@ -16,10 +16,10 @@
 #ifndef HWLIB_ARDUINO_DUE_H
 #define HWLIB_ARDUINO_DUE_H
 
-#include HWLIB_INCLUDE( hwlib-all.hpp )
+#include "hwlib-all.hpp"
 #define register
 #include "sam.h"
-#include HWLIB_INCLUDE( hwlib-arduino-due-system-sam3xa.inc )
+#include "hwlib-arduino-due-system-sam3xa.inc"
 
 /// \brief
 /// hwlib implementation for the Arduino Due
