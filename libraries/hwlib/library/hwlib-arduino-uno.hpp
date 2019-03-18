@@ -20,7 +20,7 @@
 
 #include "avr/io.h"
 
-#include HWLIB_INCLUDE( hwlib-all.hpp )
+#include "hwlib-all.hpp"
 
 /// \brief
 /// hwlib implementation for the Arduino Uno

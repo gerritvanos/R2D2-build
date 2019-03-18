@@ -26,7 +26,7 @@
 #define HWLIB_NATIVE_H
 
 #define _HWLIB_TARGET_WAIT_US_BUSY
-#include HWLIB_INCLUDE( ../hwlib-all.hpp )
+#include "../hwlib-all.hpp"
 #include <iostream>
 
 namespace hwlib {
