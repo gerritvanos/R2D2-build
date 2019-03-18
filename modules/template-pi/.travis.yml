@@ -24,12 +24,15 @@ addons:
      
 
 before_script:
-    - wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2? -O /tmp/gcc-arm-none-eabi.tar.bz2
-    - tar -xvjf /tmp/gcc-arm-none-eabi.tar.bz2
-    - export PATH=$PATH:$PWD/gcc-arm-none-eabi-8-2018-q4-major/bin/ 
+    - wget  https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compilers/GCC%208.3.0/Raspberry%20Pi%202%2C%203/cross-gcc-8.3.0-pi_2-3.tar.gz/download
+    - tar xf download
+    - sudo mv cross-pi-gcc-8.3.0-1 /opt
+    - echo 'export PATH=/opt/cross-pi-gcc-8.3.0-1/bin:$PATH' >> .profile  
+    - echo 'export LD_LIBRARY_PATH=/opt/cross-pi-gcc-8.3.0-1/lib:$LD_LIBRARY_PATH' >> .profile
+    - source .profile
+    - arm-linux-gnueabihf-g++ -v
     - g++ -v
     - gcc -v
-    - arm-none-eabi-g++ -v
 
 install:
     - cd ..

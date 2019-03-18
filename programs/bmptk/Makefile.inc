@@ -434,11 +434,11 @@ ifeq ($(TARGET), raspberry_pi)
    $(eval $(All_Targets))
 
    CHIP              := raspberry_pi
-   PREFIX            := $(GCC-RPI)/bin/armv8-rpi3-linux-gnueabihf-
-   TARGET_CPP_FLAGS  += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi
-   TARGET_C_FLAGS    += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi 
-   TARGET_LN_FLAGS   += -I$(HWLIB)/../wiringPi/wiringPi -L$(HWLIB)/../wiringPi/wiringPi -l:libwiringPi.so
-   LIBS              += $(HWLIB)/../wiringPi/wiringPi/libwiringPi.so
+   PREFIX            := $(GCC-RPI)$(ARM-RPI)-
+   TARGET_CPP_FLAGS  += -I$(WIRINGPI) -L$(WIRINGPI)
+   TARGET_C_FLAGS    += -I$(WIRINGPI) -L$(WIRINGPI) 
+   TARGET_LN_FLAGS   += -I$(WIRINGPI) -L$(WIRINGPI) -lwiringPi
+   LIBS              += $(WIRINGPI)/libwiringPi.so
    RESULTS           += $(OUT)
    export PATH       := $PREFIX:$(PATH)
    XTAL              ?= 1000000   
@@ -1323,12 +1323,12 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	#
    #=========================================================================
 
-$(HWLIB)/../wiringPi/wiringPi/libwiringPi.so:
+$(WIRINGPI)/libwiringPi.so:
 	@echo 'Building WiringPi'
 ifeq ($(OS),Windows_NT)
-		cd $(HWLIB)/../wiringPi/wiringPi/ & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+		cd $(WIRINGPI) & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
 else
-		cd $(HWLIB)/../wiringPi/wiringPi/ & make
+		(cd $(WIRINGPI) && make)
 endif
 	@echo ' '
 
