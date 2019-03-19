@@ -54,10 +54,10 @@
    #include "hwlib-scouting-lock.hpp"
 #endif
 
-/// - HWLIB_TARGET_native : native target (Windows or Linux PC)
+/// - HWLIB_TARGET_raspberry_pi : target for raspberry-pi
 #ifdef HWLIB_TARGET_raspberry_pi
    #define HWLIB_TARGET
-   #include HWLIB_INCLUDE( targets/hwlib-raspberry-pi.hpp )
+   #include "targets/hwlib-raspberry-pi.hpp"
 #endif
 
 /// - HWLIB_TARGET_native : native target (Windows or Linux PC)
