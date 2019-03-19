@@ -1,0 +1,3 @@
+[submodule "libraries/WiringPi"]
+	path = libraries/WiringPi
+	url = https://github.com/R2D2-2019/WiringPi
