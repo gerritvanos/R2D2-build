@@ -1,3 +1,12 @@
 [submodule "libraries/WiringPi"]
 	path = libraries/WiringPi
 	url = https://github.com/R2D2-2019/WiringPi
+[submodule "libraries/hwlib"]
+	path = libraries/hwlib
+	url = https://github.com/r2d2-2019/hwlib
+[submodule "libraries/libusb"]
+	path = libraries/libusb
+	url = https://github.com/r2d2-2019/libusb
+[submodule "libraries/Catch2"]
+	path = libraries/Catch2
+	url = https://github.com/r2d2-2019/Catch2
