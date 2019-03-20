@@ -10,3 +10,6 @@
 [submodule "libraries/Catch2"]
 	path = libraries/Catch2
 	url = https://github.com/r2d2-2019/Catch2
+[submodule "libraries/datastructures"]
+	path = libraries/datastructures
+	url = https://github.com/R2D2-2019/datastructures
