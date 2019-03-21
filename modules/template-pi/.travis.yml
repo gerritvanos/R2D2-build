@@ -36,7 +36,10 @@ before_script:
 
 install:
     - cd ..
-    - git clone https://github.com/R2D2-2019/R2D2-build.git 
+    - git clone https://github.com/R2D2-2019/R2D2-build.git
+    - cd R2D2-build
+    - git submodule update --init --recursive
+    - cd ..    
     - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc # Change symlinks of gcc to gcc-7
     - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++
     - export PATH=$PATH:/usr/bin/g++:/usr/bin/gcc
