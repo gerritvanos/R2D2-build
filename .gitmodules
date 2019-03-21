@@ -13,3 +13,9 @@
 [submodule "libraries/datastructures"]
 	path = libraries/datastructures
 	url = https://github.com/R2D2-2019/datastructures
+[submodule "libraries/I2C_library"]
+	path = libraries/I2C_library
+	url = https://github.com/r2d2-2019/I2C_library
+[submodule "libraries/USART_library"]
+	path = libraries/USART_library
+	url = https://github.com/r2d2-2019/USART_library
