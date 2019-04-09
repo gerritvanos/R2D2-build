@@ -22,3 +22,6 @@
 [submodule "libraries/internal_communication"]
 	path = libraries/internal_communication
 	url = https://github.com/r2d2-2019/internal_communication
+[submodule "libraries/PWM_library"]
+	path = libraries/PWM_library
+	url = https://github.com/R2D2-2019/PWM_library
