@@ -28,10 +28,6 @@ cache:
     # cache the arm-none-eabi location
     - $HOME/arm-none-eabi
 
-before_install:
-  # try to create the arm-none-eabi folder
-  - mkdir -p $HOME/arm-none-eabi
-
 install:
   # clone git repo to the $HOME folder
   - git clone --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
