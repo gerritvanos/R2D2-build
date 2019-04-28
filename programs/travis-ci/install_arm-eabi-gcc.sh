@@ -11,7 +11,7 @@ else
     target_path=$HOME/arm-none-eabi
     target_url="https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2?"
     mkdir -p "$target_path"
-    curl -Ls "$target_url" | tar -xz -C "$target_path" --strip-components=1
+    curl -Ls "$target_url" | tar -xj -C "$target_path" --strip-components=1
 fi
 
 echo "Done installing Arm-none-eabi"
