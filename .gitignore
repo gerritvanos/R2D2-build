@@ -10,3 +10,4 @@ settings.json
 !/modules/.clang-format
 !/programs/bmptk
 !/programs/install
+!/programs/travis-ci
