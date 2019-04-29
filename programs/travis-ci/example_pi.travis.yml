@@ -24,6 +24,9 @@ addons:
       - g++-7
 
 cache:
+  # cache the files for 3 hours
+  timeout: 10800
+
   directories:
     # cache the arm-pi location
     - $HOME/arm-pi
@@ -38,9 +41,12 @@ install:
   # run installer
   - $HOME/r2d2/programs/travis-ci/install_arm-pi-gcc.sh
 
+  # make a link to /opt
+  - sudo ln -s $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
+
   # add arm-pi to path and libary
-  - export PATH=$PATH:$HOME/arm-pi/bin/ 
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/arm-pi/lib
+  - export PATH=$PATH:/opt/cross-pi-gcc-8.3.0-1/bin
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cross-pi-gcc-8.3.0-1/lib
 
   # Change symlinks of gcc to gcc-7
   - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 

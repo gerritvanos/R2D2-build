@@ -24,6 +24,9 @@ addons:
       - g++-7
 
 cache:
+  # cache the files for 3 hours
+  timeout: 10800
+
   directories:
     # cache the arm-none-eabi location
     - $HOME/arm-none-eabi
