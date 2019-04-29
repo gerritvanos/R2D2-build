@@ -25,3 +25,6 @@
 [submodule "libraries/PWM_library"]
 	path = libraries/PWM_library
 	url = https://github.com/R2D2-2019/PWM_library
+[submodule "libraries/trng_library"]
+	path = libraries/trng_library
+	url = https://github.com/R2D2-2019/trng_library
