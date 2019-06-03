@@ -28,3 +28,6 @@
 [submodule "libraries/trng_library"]
 	path = libraries/trng_library
 	url = https://github.com/R2D2-2019/trng_library
+[submodule "libraries/rtos"]
+	path = libraries/rtos
+	url = https://github.com/R2D2-2019/rtos
