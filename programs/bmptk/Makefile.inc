@@ -187,6 +187,7 @@ DMP           := $(PROJECT).dmp
 LSSX          := $(PROJECT).lssx
 LSS           := $(PROJECT).lss
 EXE           := $(PROJECT).exe
+OUT           := $(PROJECT).out
 DLL           := $(PROJECT).dll
 PYD           := $(PROJECT).pyd
 NMDUMP        := $(PROJECT).nmdump   
@@ -203,6 +204,7 @@ CLEAN         += $(DMP)
 CLEAN         += $(LSSX)
 CLEAN         += $(LSS)
 CLEAN         += $(EXE)
+CLEAN         += $(OUT)
 CLEAN         += $(DLL)
 CLEAN         += $(PYD)
 CLEAN         += $(NMDUMP)
@@ -420,14 +422,35 @@ endef
    # running native
    # 
    #=========================================================================
+
+# running on the raspberry pi 2/3
+ifeq ($(TARGET), raspberry_pi)
+   EMBEDDED          ?= 0
+   HOSTED            ?= 1
+   HAS_FILESYSTEM    ?= 1
+   HEAP              ?= NATIVE
+   STACK_SIZE        ?= 1   
    
+   $(eval $(All_Targets))
+
+   CHIP              := raspberry_pi
+   PREFIX            := $(GCC-RPI)$(ARM-RPI)-
+   TARGET_CPP_FLAGS  += -I$(WIRINGPI) -L$(WIRINGPI)
+   TARGET_C_FLAGS    += -I$(WIRINGPI) -L$(WIRINGPI) 
+   TARGET_LN_FLAGS   += -I$(WIRINGPI) -L$(WIRINGPI) -lwiringPi
+   LIBS              += $(WIRINGPI)/libwiringPi.so
+   RESULTS           += $(OUT)
+   export PATH       := $PREFIX:$(PATH)
+   XTAL              ?= 1000000   
+endif
+
 # running native on Windows     
 define Windows      
    CHIP              := Windows_Native
    PREFIX            := $(GCC-WIN)/bin/
    TARGET_CPP_FLAGS  += -mno-ms-bitfields   
    TARGET_C_FLAGS    += -mno-ms-bitfields   
-   TARGET_LN_FLAGS   += -lgdi32
+   LIBS              += ../../../libraries/libusb/MinGW32/static/libusb-1.0.a
    RESULTS           += $(EXE)
    export PATH       := $PREFIX:$(PATH)
    RUN               ?= ./$(EXE)
@@ -871,7 +894,7 @@ endif
 define Atmel_SAM3
    $(eval $(Cortex-M3))
    ROM_START      ?= 0x00000000   
-   RAM_START      ?= 0x20000000     
+   RAM_START      ?= 0x20070000     
    INCLUDES       += -I$(BMPTK)/targets/cortex/atmel
    PORT_CHECK     ?= $(CHECK_PORT) $(SERIAL_PORT)  
    RUN_PRE        := $(DUE_BOOTMODE)
@@ -1276,6 +1299,12 @@ $(EXE): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
 	@echo ' '  
       
+# How to make an .out executable by linking all objects
+$(OUT): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
+	@echo 'Linking OUT target: $(OUT)'
+	$(LINKER) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES)
+	@echo ' '
+
 # How to make an .dll dynamic link library by linking all objects
 $(DLL): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking DLL target: $(DLL)'
@@ -1287,7 +1316,22 @@ $(PYD): $(OBJECTS) $(LIBS) $(ALL_LIBRARIES)
 	@echo 'Linking PYD target: $(PYD)'
 	$(LINKER) -shared -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS) $(ALL_LIBRARIES) $(PYTHON_DLLS)
 	@echo ' '  
-      
+
+   #=========================================================================
+	#
+	# How to make the wiringpi library
+	#
+   #=========================================================================
+
+$(WIRINGPI)/libwiringPi.so:
+	@echo 'Building WiringPi'
+ifeq ($(OS),Windows_NT)
+		cd $(WIRINGPI) & "..\\..\\..\\programs\\bmptk\\tools\\bmptk-make.exe"
+else
+		(cd $(WIRINGPI) && make)
+endif
+	@echo ' '
+
    #=========================================================================
    #
    # calculated size stack
@@ -1377,7 +1421,7 @@ PORT_CHECK :=
 run: $(PROJECT)
 	$(PORT_CHECK)
 	$(RUN_PRE)   
-	-$(RUN)
+	$(RUN)
 	$(RUN_TERMINAL)
 	$(RUN_PAUSE)
     

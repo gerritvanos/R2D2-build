@@ -39,6 +39,12 @@ ifeq ($(OS),Windows_NT)
    #GCC-AVR         ?= $(WPF32)/Arduino/hardware/tools/avr
    #GCC-AVR         ?= $(WPF32)/Atmel/Atmel Toolchain/AVR8 GCC/Native/3.4.1061/avr8-gnu-toolchain
 
+   # raspberry pi 2/3 gcc location
+   GCC-RPI         ?= ../../../programs/rpi_gcc/bin/
+
+   # raspberry pi compiler prefix
+   ARM-RPI        ?= armv8-rpi3-linux-gnueabihf
+
    # the ARM toolchain
    GCC-ARM         ?= ../../../programs/8 2018-q4-major
    #GCC-ARM         ?= $(WPF32)/GNU Tools ARM Embedded/5.4 2016q3
@@ -70,8 +76,16 @@ ifeq ($(OS),Windows_NT)
    
 else
 
+   # raspberry pi 2/3 gcc location
+   GCC-RPI         ?=
+
+   # raspberry pi compiler prefix
+   ARM-RPI        ?= arm-linux-gnueabihf
+
+   # arduino due compiler prefix
    ARM-EABI        ?= arm-none-eabi
 
+   # arduino avr compiler prefix
    GCC-AVR         ?= avr-
 
    # on Linux the path can in most cases be omitted
@@ -83,7 +97,7 @@ else
    SERIAL_PORT_DUE      := /dev/ttyACM0
    SERIAL_PORT_UNO      := /dev/ttyUSB0
 
-   SERIAL_PORT          := $(SERIAL_PORT_UNO)
+   SERIAL_PORT          ?= $(SERIAL_PORT_DUE)
    SERIAL_BAUDRATE      ?= 38400
    CONSOLE_BAUDRATE     ?= 38400 
 

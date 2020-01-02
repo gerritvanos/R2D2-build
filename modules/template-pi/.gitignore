@@ -8,7 +8,8 @@
 *.lss
 *.exe
 *.lst
+*.exe
+*.out
 .idea/
 cmake*/
-CMakeLists.txt
 settings.json

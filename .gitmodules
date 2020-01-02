@@ -1,0 +1,33 @@
+[submodule "libraries/WiringPi"]
+	path = libraries/WiringPi
+	url = https://github.com/R2D2-2019/WiringPi
+[submodule "libraries/hwlib"]
+	path = libraries/hwlib
+	url = https://github.com/r2d2-2019/hwlib
+[submodule "libraries/libusb"]
+	path = libraries/libusb
+	url = https://github.com/r2d2-2019/libusb
+[submodule "libraries/Catch2"]
+	path = libraries/Catch2
+	url = https://github.com/r2d2-2019/Catch2
+[submodule "libraries/datastructures"]
+	path = libraries/datastructures
+	url = https://github.com/R2D2-2019/datastructures
+[submodule "libraries/I2C_library"]
+	path = libraries/I2C_library
+	url = https://github.com/r2d2-2019/I2C_library
+[submodule "libraries/USART_library"]
+	path = libraries/USART_library
+	url = https://github.com/r2d2-2019/USART_library
+[submodule "libraries/internal_communication"]
+	path = libraries/internal_communication
+	url = https://github.com/r2d2-2019/internal_communication
+[submodule "libraries/PWM_library"]
+	path = libraries/PWM_library
+	url = https://github.com/R2D2-2019/PWM_library
+[submodule "libraries/trng_library"]
+	path = libraries/trng_library
+	url = https://github.com/R2D2-2019/trng_library
+[submodule "libraries/rtos"]
+	path = libraries/rtos
+	url = https://github.com/R2D2-2019/rtos

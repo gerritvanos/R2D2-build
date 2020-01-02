@@ -4,15 +4,15 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/../libraries/hwlib/library",
-                "${workspaceFolder}/../programs/bmptk/targets/cortex/atmel"
+                "${workspaceFolder}/../../libraries/hwlib/library",
+                "${workspaceFolder}/../../programs/bmptk/targets/cortex/atmel"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
                 "__SAM3X8E__",
-                "HWLIB_TARGET_arduino_due"
+                "HWLIB_TARGET_raspberry_pi"
             ],
             "cStandard": "c11",
             "cppStandard": "c++17",
